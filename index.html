@@ -1,6 +1,45 @@
 <html>
     <body>
         <h1>郵便番号入力</h1>
+        <div>
+            <h2>使用方法</h2>
+            <div>
+                <div>
+                    以下をhtmlに追加
+                </div>
+                <code>
+                    &lt;script src="https://mao2009.github.io/zipToAddress/zipToAddress.js"&gt;&lt;/script&gt;
+                </code>
+                <div>
+                    住所検索欄を以下のように配置する
+                    zipToAddressの引数にはセレクタを指定する<br>
+                    <pre>
+                        <code>
+&lt;div&gt;
+    郵便番号: 
+    &lt;input type="text" name="zip1"&gt;&lt;/input&gt;　-　
+    &lt;input type="text" name="zip2"&gt;&lt;/input&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    住所 :
+    &lt;input type="text" id="pref"&gt;&lt;/input&gt;
+    &lt;input type="text" id="city"&gt;&lt;/input&gt;
+    &lt;input type="text" id="street"&gt;&lt;/input&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;button onclick='zipToAddress("[name=zip1]", "[name=zip2]", "#pref", "#city", "#street")'&gt;住所検索&lt;/button&gt;
+&lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div>
+                        郵便番号がひとつのフィールドに入っている場合は2番目の引数を""にする。<br>
+                        郵便番号はハイフンが入っていても全角数字でも可能
+                    </div>
+
+                </div>
+                    
+            </div>
+        </div>
 
         <h2>Sample1 - 住所が1つの場合</h2>
         <div id="sample1">
@@ -17,6 +56,25 @@
                 <button onclick='zipToAddress("[name=zip1]", "[name=zip2]", "#address")'>郵便番号検索</button>
             </div>
         </div>
+        <h3>サンプルコード</h3>
+        <pre>
+            <code>
+&lt;div id="sample1"&gt;
+    &lt;div&gt;
+        郵便番号:
+        &lt;input type="text" name="zip1"&gt;&lt;/input&gt;　-　
+        &lt;input type="text" name="zip2"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="text" id="address"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        住所 :
+        &lt;button onclick='zipToAddress("sample1 [name=zip1]", "sample1 [name=zip2]", "#address")'&gt;郵便番号検索&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
 
         <h2>Sample2　- 住所が2つの場合</h2>
         <div id="sample2">
@@ -34,6 +92,26 @@
                 <button onclick='zipToAddress("#sample2 [name=zip1]", "#sample2 [name=zip2]", "#pref2", "#city2")'>郵便番号検索</button>
             </div>
         </div>
+                <h3>サンプルコード</h3>
+        <pre>
+            <code>
+&lt;div id="sample2"&gt;
+    &lt;div&gt;
+        郵便番号:
+        &lt;input type="text" name="zip1"&gt;&lt;/input&gt;　-　
+        &lt;input type="text" name="zip2"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="text" id="pref2"&gt;&lt;/input&gt;
+        &lt;input type="text" id="city2"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        住所 :
+        &lt;button onclick='zipToAddress("sample2 [name=zip1]", " sample2 [name=zip2]", "#pref2", "#city2")'&gt;郵便番号検索&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
 
         <h2>Sample3 - 住所が3つの場合</h2>
         <div id="sample3">
@@ -52,7 +130,26 @@
                 <button onclick='zipToAddress("#sample3 [name=zip1]", "#sample3 [name=zip2]", "#pref3", "#city3", "#street3")'>郵便番号検索</button>
             </div>
         </div>
-
+        <h3>サンプルコード</h3>
+        <pre>
+            <code>
+&lt;div id="sample3"&gt;
+    &lt;div&gt;
+        郵便番号:
+        &lt;input type="text" name="zip1"&gt;&lt;/input&gt;　-　
+        &lt;input type="text" name="zip2"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="text" id="pref3"&gt;&lt;/input&gt;
+        &lt;input type="text" id="city3"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        住所 :
+        &lt;button onclick='zipToAddress("sample3 [name=zip1]", " sample3 [name=zip2]", "#pref3", "#city3")'&gt;郵便番号検索&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
         <h2>Sample4 - 都道府県がselectの場合</h2>
         <div id="sample4">
             <div>
@@ -119,6 +216,7 @@
                 <button onclick='zipToAddress("#sample4 [name=zip1]", "#sample4 [name=zip2]", "#pref4", "#city4","#street4")'>郵便番号検索</button>
             </div>
         </div>
+        
 
         <h2>Sample5 - 住所を取得後の処理をする場合</h2>
         <div id="sample5">
@@ -188,6 +286,30 @@
             </div>
             <div>
                 <button onclick='zipToAddress("#sample5 [name=zip1]", "#sample5 [name=zip2]", "#pref5", "#city5", "", sampleFunc)'>郵便番号検索</button>
+            </div>
+
+            <h3>サンプルコード</h3>
+            <pre>
+                <code>
+&lt;div id="sample5"&gt;
+    &lt;div&gt;
+        郵便番号:
+        &lt;input type="text" name="zip1"&gt;&lt;/input&gt;　-　
+        &lt;input type="text" name="zip2"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="text" id="pref5"&gt;&lt;/input&gt;
+        &lt;input type="text" id="city5"&gt;&lt;/input&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        住所 :
+        &lt;button onclick='zipToAddress("sample5 [name=zip1]", " sample5 [name=zip2]", "#pref5", "", sampleFunc)'&gt;郵便番号検索&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+            <div>
+                6番目に関数を渡すことで住所を取得後の処理をかける
             </div>
             <h3>サンプル関数</h3>
             <pre>
