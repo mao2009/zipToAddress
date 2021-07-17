@@ -5,7 +5,7 @@ document.body.appendChild(fetch_jsonp);
 let zipToAddress = null;
 
 fetch_jsonp.onload = () => {
-    zipToAddress = (zip1, zip2, prefecture, city = null, street = null, func = null) =>{
+    zipToAddress = (zip1, zip2, prefecture, city = "", street = "", func = "") =>{
         const API_URL = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
 
         let zip = "";
@@ -14,7 +14,7 @@ fetch_jsonp.onload = () => {
         }
 
         zip = document.querySelector(zip1).value;
-        if (zip2 !== null) {
+        if (zip2 !== "") {
             zip += document.querySelector(zip2).value;
         }
 
@@ -56,7 +56,7 @@ fetch_jsonp.onload = () => {
                     prefInput.value = reslutPref;
                 }
 
-                if (city === null) {
+                if (city === "") {
                     if (prefInput.nodeName  !== "SELECT"){
                         prefInput.value += reslutCity;
                     }
@@ -64,8 +64,8 @@ fetch_jsonp.onload = () => {
                     document.querySelector(city).value = reslutCity;
                 }
 
-                if (street === null) {
-                    if(city === null) {
+                if (street === "") {
+                    if(city === "") {
                         if (prefInput.nodeName  !== "SELECT"){
                             prefInput.value += reslutStreet;
                         }
@@ -76,7 +76,7 @@ fetch_jsonp.onload = () => {
                     document.querySelector(street).value = reslutStreet;
                 }
 
-                if (func !== null) {
+                if (func !== "") {
                     func(data);
                 }
             }
