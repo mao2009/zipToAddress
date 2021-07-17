@@ -43,11 +43,12 @@ fetch_jsonp.onload = () => {
 
                 const prefInput = document.querySelector(prefecture);
 
-                if (prefInput.nodeName  === "select"){
+                if (prefInput.nodeName  === "SELECT"){
                     const options = prefInput.options;
+                    const reslutPref =  data.results[0].address1;
+
                     for (let i = 0; i < options.length; i++) {
-                        const reslutPref =  data.results[0].address1;
-                        if (options[i].innerHTML === reslutPref) {
+                        if (options[i].innerHTML == reslutPref) {
                             options[i].selected = true;
                         }
                     }
@@ -56,7 +57,7 @@ fetch_jsonp.onload = () => {
                 }
 
                 if (city === null) {
-                    if (prefInput.nodeName  !== "select"){
+                    if (prefInput.nodeName  !== "SELECT"){
                         prefInput.value += reslutCity;
                     }
                 } else {
@@ -65,7 +66,7 @@ fetch_jsonp.onload = () => {
 
                 if (street === null) {
                     if(city === null) {
-                        if (prefInput.nodeName  !== "select"){
+                        if (prefInput.nodeName  !== "SELECT"){
                             prefInput.value += reslutStreet;
                         }
                     } else {
