@@ -7,7 +7,23 @@ let zipToAddress = null;
 script.onload = () => {
     zipToAddress = (zip1, zip2, prefecture, city = null, street = null, func = null) =>{
         const API_URL = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
-        const zip = (zip1 + zip2).match(/\d/g).join("");
+
+        let zip = "";
+        if (zip1 === null) {
+            return;
+        }
+
+        zip = document.querySelector(zip1).value;
+        if (zip2 !== null) {
+            zip += document.querySelector(zip2).value;
+        }
+
+        zip = zip.replace(/[０-９]/g, function(str) {
+            return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+        });
+
+        zip = zip.match(/\d/g).join("");
+        
         const url = API_URL + zip;
         const addressInput = document.querySelector(prefecture);
 
