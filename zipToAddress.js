@@ -1,10 +1,10 @@
 const fetch_jsonp = document.createElement( 'script' );
 fetch_jsonp.type = 'text/javascript';
 fetch_jsonp.src = "https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js";
-document.body.appendChild(script);
+document.body.appendChild(fetch_jsonp);
 let zipToAddress = null;
 
-script.onload = () => {
+fetch_jsonp.onload = () => {
     zipToAddress = (zip1, zip2, prefecture, city = null, street = null, func = null) =>{
         const API_URL = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
 
@@ -23,7 +23,7 @@ script.onload = () => {
         });
 
         zip = zip.match(/\d/g).join("");
-        
+
         const url = API_URL + zip;
         const addressInput = document.querySelector(prefecture);
 
