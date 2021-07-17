@@ -180,7 +180,6 @@
                     <option value="47">沖縄県</option>
                 </select>
                 <input type="text" id="city5"></input>
-                <input type="text" id="street5"></input>
             </div>
 
             <div>
@@ -188,7 +187,7 @@
                 </textarea>
             </div>
             <div>
-                <button onclick='zipToAddress("#sample5 [name=zip1]", "#sample5 [name=zip2]", "#pref5", "#city5","#street5", sampleFunc)'>郵便番号検索</button>
+                <button onclick='zipToAddress("#sample5 [name=zip1]", "#sample5 [name=zip2]", "#pref5", "#city5", "", sampleFunc)'>郵便番号検索</button>
             </div>
             <h3>サンプル関数</h3>
             <pre>
@@ -210,7 +209,7 @@
             const sample_script = document.querySelector("#sample_script");
             sample_code.innerHTML = sample_script.innerHTML.replace(/</g,'&lt;').replace(/>/,'&gt;');
         </script>
-        <script src="https://mao2009.github.io/zipToAddress/zipToAddress.js"></script>  
+        <script src="./zipToAddress.js"></script>  
         
     </body>
     
