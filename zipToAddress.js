@@ -1,9 +1,10 @@
 const fetch_jsonp = document.createElement( 'script' );
 fetch_jsonp.type = 'text/javascript';
 fetch_jsonp.src = "https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js";
-window.onload  = () => {
+document.addEventListener('DOMContentLoaded', (event) => {
     document.body.appendChild(fetch_jsonp);
-}
+});
+
 
 let zipToAddress = null;
 
