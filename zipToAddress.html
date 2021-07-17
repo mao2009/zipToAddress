@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <div>
+            <input type="text" name="zip1"></input>-<input type="text" name="zip2"></input>
+        </div>
+        <div>
+            <input type="text" id="address"></input>
+        </div>
+        <div>
+            <button onclick='zipToAddress(document.querySelector("[name=zip1]").value, document.querySelector("[name=zip2]").value, "#address")'>郵便番号検索</button>
+        </div>
+        <script src="./zipToAddress.js"></script>
+    </body>
+    
+</html>
